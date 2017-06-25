@@ -36,7 +36,6 @@
         - scipy
         - scikit-learn
         - bottle
-        - mysqlclient
         - pyMySQL3
 
     - name: install MySQL packages
