@@ -78,11 +78,14 @@ CREATE TABLE User(
 CREATE TABLE Chat(
     id INT NOT NULL AUTO_INCREMENT,
     area_id INT NOT NULL,
+    user_id INT NOT NULL,
+    content VARCHAR(140) NOT NULL,
     alive BOOLEAN DEFAULT 0,
     created TIMESTAMP DEFAULT current_timestamp(),
     updated TIMESTAMP DEFAULT current_timestamp(),
     PRIMARY KEY(id),
-    FOREIGN KEY(area_id) REFERENCES Area(id));
+    FOREIGN KEY(area_id) REFERENCES Area(id),
+    FOREIGN KEY(user_id) REFERENCES User(id));
 
 CREATE TABLE Comment(
     id INT NOT NULL AUTO_INCREMENT,
