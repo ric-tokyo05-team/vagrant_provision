@@ -48,7 +48,7 @@
         - python-mysqldb
 
     - name: create mysql database
-      mysql_db: name={{ mysql_database }} state=present
+      mysql_db: name={{ mysql_database }} state=present encoding=utf8
 
     - name: create mysql user
       mysql_user: name={{ mysql_user }} host={{ item }} password={{ mysql_password }} priv={{ mysql_database }}.*:ALL,GRANT state=present
