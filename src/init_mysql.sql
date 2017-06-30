@@ -17,7 +17,7 @@ CREATE TABLE Prefecture(
     name VARCHAR(4) NOT NULL,
     alive BOOLEAN DEFAULT 0,
     created TIMESTAMP DEFAULT current_timestamp(),
-    updated TIMESTAMP DEFAULT current_timestamp(),
+    updated TIMESTAMP DEFAULT current_timestamp() ON UPDATE current_timestamp(),
     PRIMARY KEY(id));
 
 CREATE TABLE City(
@@ -26,7 +26,7 @@ CREATE TABLE City(
     name VARCHAR(20) NOT NULL,
     alive BOOLEAN DEFAULT 0,
     created TIMESTAMP DEFAULT current_timestamp(),
-    updated TIMESTAMP DEFAULT current_timestamp(),
+    updated TIMESTAMP DEFAULT current_timestamp() ON UPDATE current_timestamp(),
     PRIMARY KEY(id),
     FOREIGN KEY(prefecture_id) REFERENCES Prefecture(id));
 
@@ -36,7 +36,7 @@ CREATE TABLE Area(
     name VARCHAR(20) NOT NULL,
     alive BOOLEAN DEFAULT 0,
     created TIMESTAMP DEFAULT current_timestamp(),
-    updated TIMESTAMP DEFAULT current_timestamp(),
+    updated TIMESTAMP DEFAULT current_timestamp() ON UPDATE current_timestamp(),
     PRIMARY KEY(id),
     FOREIGN KEY(city_id) REFERENCES City(id));
 
@@ -45,7 +45,7 @@ CREATE TABLE Thema(
     name VARCHAR(20) NOT NULL,
     alive BOOLEAN DEFAULT 0,
     created TIMESTAMP DEFAULT current_timestamp(),
-    updated TIMESTAMP DEFAULT current_timestamp(),
+    updated TIMESTAMP DEFAULT current_timestamp() ON UPDATE current_timestamp(),
     PRIMARY KEY(id));
 
 CREATE TABLE Thema_detail(
@@ -54,7 +54,7 @@ CREATE TABLE Thema_detail(
     name VARCHAR(20) NOT NULL,
     alive BOOLEAN DEFAULT 0,
     created TIMESTAMP DEFAULT current_timestamp(),
-    updated TIMESTAMP DEFAULT current_timestamp(),
+    updated TIMESTAMP DEFAULT current_timestamp() ON UPDATE current_timestamp(),
     PRIMARY KEY(id),
     FOREIGN KEY(thema_id) REFERENCES Thema(id));
 
@@ -71,7 +71,7 @@ CREATE TABLE User(
     mail_notice BOOLEAN DEFAULT 0,
     alive BOOLEAN DEFAULT 0,
     created TIMESTAMP DEFAULT current_timestamp(),
-    updated TIMESTAMP DEFAULT current_timestamp(),
+    updated TIMESTAMP DEFAULT current_timestamp() ON UPDATE current_timestamp(),
     PRIMARY KEY(id),
     FOREIGN KEY(prefecture_id) REFERENCES Prefecture(id));
 
@@ -82,7 +82,7 @@ CREATE TABLE Chat(
     content VARCHAR(140) NOT NULL,
     alive BOOLEAN DEFAULT 0,
     created TIMESTAMP DEFAULT current_timestamp(),
-    updated TIMESTAMP DEFAULT current_timestamp(),
+    updated TIMESTAMP DEFAULT current_timestamp() ON UPDATE current_timestamp(),
     PRIMARY KEY(id),
     FOREIGN KEY(area_id) REFERENCES Area(id),
     FOREIGN KEY(user_id) REFERENCES User(id));
@@ -96,7 +96,7 @@ CREATE TABLE Comment(
     image_url VARCHAR(100),
     alive BOOLEAN DEFAULT 0,
     created TIMESTAMP DEFAULT current_timestamp(),
-    updated TIMESTAMP DEFAULT current_timestamp(),
+    updated TIMESTAMP DEFAULT current_timestamp() ON UPDATE current_timestamp(),
     PRIMARY KEY(id),
     FOREIGN KEY(user_id) REFERENCES User(id),
     FOREIGN KEY(chat_id) REFERENCES Chat(id),
@@ -108,7 +108,7 @@ CREATE TABLE Good(
     comment_id INT NOT NULL,
     alive BOOLEAN DEFAULT 0,
     created TIMESTAMP DEFAULT current_timestamp(),
-    updated TIMESTAMP DEFAULT current_timestamp(),
+    updated TIMESTAMP DEFAULT current_timestamp() ON UPDATE current_timestamp(),
     PRIMARY KEY(id),
     FOREIGN KEY(user_id) REFERENCES User(id),
     FOREIGN KEY(comment_id) REFERENCES Comment(id),
@@ -120,7 +120,7 @@ CREATE TABLE Favorite(
     comment_id INT NOT NULL,
     alive BOOLEAN DEFAULT 0,
     created TIMESTAMP DEFAULT current_timestamp(),
-    updated TIMESTAMP DEFAULT current_timestamp(),
+    updated TIMESTAMP DEFAULT current_timestamp() ON UPDATE current_timestamp(),
     PRIMARY KEY(id),
     FOREIGN KEY(user_id) REFERENCES User(id),
     FOREIGN KEY(comment_id) REFERENCES Comment(id),

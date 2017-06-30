@@ -8,6 +8,10 @@
     mysql_database: test_database
 
   tasks:
+    - name: set timezone to Asia/Tokyo
+      timezone:
+        name: Asia/Tokyo
+
     - name: apt install packages
       apt: name={{ item }} state=installed update_cache=yes
       with_items:
