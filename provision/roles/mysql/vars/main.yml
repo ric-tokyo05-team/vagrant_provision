@@ -1,4 +1,0 @@
-vars:
-  mysql_user: test_user
-  mysql_password: test_password
-  mysql_database: test_database
