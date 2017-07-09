@@ -35,3 +35,4 @@
 
 - name: Install docker compose
   pip: name=docker-compose state=present virtualenv=/home/vagrant/env virtualenv_python=python3.5
+

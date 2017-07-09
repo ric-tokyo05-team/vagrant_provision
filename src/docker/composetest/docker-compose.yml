@@ -2,12 +2,15 @@ version: '2'
 services:
   db:
     image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql
+
   web:
     build: .
     command: python test.py
     volumes:
       - .:/code
     ports:
-      - "8080:8080"
+      - "10000:8080"
     depends_on:
       - db
