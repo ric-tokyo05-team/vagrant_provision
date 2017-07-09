@@ -1,0 +1,11 @@
+- name: apt install node packages
+  apt: name={{ item }} state=installed update_cache=yes
+  with_items:
+    - nodejs
+    - npm
+
+- name: rename nodejs to node
+  file:
+    src: /usr/bin/nodejs
+    dest: /usr/bin/node
+    state: link

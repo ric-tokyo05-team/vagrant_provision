@@ -1,0 +1,26 @@
+- name: install MySQL packages
+  apt: name={{ item }} state=installed
+  with_items:
+    - mysql-server
+    - mysql-client
+    - libmysqld-dev
+    - libmysqlclient-dev
+    - python-mysqldb
+
+- name: create mysql database
+  mysql_db: name=test_database state=present encoding=utf8
+
+- name: create mysql user
+  mysql_user: name=test_user host={{ item }} password=test_password priv=test_database.*:ALL,GRANT state=present
+  with_items:
+    - localhost
+    - 192.168.33.%
+
+- name: uncomment a line bind-address = 127.0.0.1
+  replace: >
+    dest=/etc/mysql/mysql.conf.d/mysqld.cnf
+    regexp='^bind-address'
+    replace='#bind-address'
+
+- name: start mysql
+  service: name=mysql state=restarted enabled=yes
