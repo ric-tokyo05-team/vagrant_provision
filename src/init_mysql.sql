@@ -48,7 +48,7 @@ CREATE TABLE Thema(
     updated TIMESTAMP DEFAULT current_timestamp() ON UPDATE current_timestamp(),
     PRIMARY KEY(id));
 
-CREATE TABLE Thema_detail(
+CREATE TABLE ThemaDetail(
     id INT NOT NULL AUTO_INCREMENT,
     thema_id INT NOT NULL,
     name VARCHAR(20) NOT NULL,
