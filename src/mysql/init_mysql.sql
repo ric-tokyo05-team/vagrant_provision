@@ -100,7 +100,7 @@ CREATE TABLE Comment(
     PRIMARY KEY(id),
     FOREIGN KEY(user_id) REFERENCES User(id),
     FOREIGN KEY(chat_id) REFERENCES Chat(id),
-    FOREIGN KEY(thema_detail_id) REFERENCES Thema_detail(id));
+    FOREIGN KEY(thema_detail_id) REFERENCES ThemaDetail(id));
 
 CREATE TABLE Good(
     id INT NOT NULL AUTO_INCREMENT,
